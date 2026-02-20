@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Turn Ideas into Reality</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;0,900;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #111;
+      --white: #fff;
+      --cream: #f5f0e8;
+      --dark-navy: #0d0f1a;
+      --orange: #e55b26;
+      --gray-text: #aaa;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: #1a1a1a; color: var(--white); }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://w.wallhaven.cc/full/9m/wallhaven-9m9r6w.jpg');
+      background-size: cover;
+      background-repeat: repeat;
+      z-index: 0;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 80px 60px;
+      gap: 40px;
+    }
+    .hero-text h1 {
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: #fff;
+      margin-bottom: 28px;
+    }
+    .hero-text p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.85);
+      max-width: 420px;
+      margin-bottom: 40px;
+    }
+    .btn-explore {
+      display: inline-block;
+      padding: 16px 44px;
+      background: #fff;
+      color: #111;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 8px;
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-explore:hover { background: #e0e0e0; }
+    .hero-image img {
+      width: 100%;
+      max-width: 540px;
+      display: block;
+      margin-left: auto;
+    }
+
+    /* ─── SECTION: EXPLORING THE WORLD ─── */
+    .section-exploring {
+      background: #f4f4f4;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100vh;
+    }
+    .section-exploring .left {
+      overflow: hidden;
+    }
+    .section-exploring .left img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .section-exploring .right {
+      padding: 80px 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+    .section-exploring .right h2 {
+      font-size: clamp(2.5rem, 4.5vw, 4.5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      color: #111;
+      margin-bottom: 30px;
+    }
+    .section-exploring .right .gallery-img {
+      width: 100%;
+      flex: 1;
+      min-height: 0;
+      object-fit: cover;
+    }
+
+    /* ─── ART IS EVERYTHING banner ─── */
+    .art-is-everything-section {
+      background: #f4f4f4;
+      padding: 40px 60px 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .art-is-everything-section .left-quote {
+      padding-top: 10px;
+    }
+    .art-is-everything-section .left-quote .event-poster {
+      width: 100%;
+      max-height: 260px;
+      object-fit: cover;
+      object-position: top;
+      margin-bottom: 24px;
+    }
+    .art-is-everything-section .left-quote p {
+      color: var(--orange);
+      font-size: 1rem;
+      line-height: 1.75;
+      font-weight: 400;
+    }
+    .art-is-everything-section .right-text h2 {
+      font-size: clamp(3rem, 6vw, 6rem);
+      font-weight: 900;
+      line-height: 1.0;
+      color: #111;
+      text-align: right;
+    }
+
+    /* ─── DESIGNS OF THE WEEK ─── */
+    .designs-week {
+      background: #1a1a1a;
+      padding: 80px 60px;
+    }
+    .designs-week h2 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      text-align: center;
+      color: #fff;
+      margin-bottom: 50px;
+      letter-spacing: 0.02em;
+    }
+    .designs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px 32px;
+    }
+    .design-card img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      margin-bottom: 16px;
+    }
+    .design-card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .design-card p {
+      font-size: 0.9rem;
+      line-height: 1.65;
+      color: var(--gray-text);
+    }
+
+    /* ─── HISTORY OF ART ─── */
+    .history-section {
+      background: var(--cream);
+      padding: 100px 60px;
+    }
+    .history-section h2 {
+      font-size: clamp(3rem, 7vw, 7rem);
+      font-weight: 900;
+      text-align: center;
+      color: #111;
+      letter-spacing: 0.02em;
+      margin-bottom: 80px;
+    }
+    .history-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+    .history-block p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #444;
+      margin-bottom: 18px;
+    }
+    .history-block img {
+      width: 100%;
+      display: block;
+    }
+
+    /* ─── DARK HISTORY BLOCK ─── */
+    .history-dark {
+      background: var(--dark-navy);
+      padding: 80px 60px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .history-dark img {
+      width: 100%;
+      display: block;
+    }
+    .history-dark .text-side p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 16px;
+    }
+    .history-dark .text-side p em { font-style: italic; }
+    .history-dark .pull-quote {
+      font-size: clamp(1.4rem, 2.8vw, 2.4rem);
+      font-weight: 700;
+      line-height: 1.3;
+      color: #fff;
+      margin-top: 36px;
+    }
+
+    /* ─── ART IS EVERYTHING FOOTER BANNER ─── */
+    .footer-banner {
+      background: #f5f5f5;
+      padding: 60px;
+      text-align: center;
+    }
+    .footer-banner h2 {
+      font-size: clamp(3.5rem, 9vw, 9rem);
+      font-weight: 900;
+      color: #111;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .hero-content,
+      .section-exploring,
+      .art-is-everything-section,
+      .history-block,
+      .history-dark { grid-template-columns: 1fr; }
+      .designs-grid,
+      .styles-grid { grid-template-columns: 1fr 1fr; }
+      .hero-image { display: none; }
+    }
+    @media (max-width: 600px) {
+      .designs-grid,
+      .styles-grid { grid-template-columns: 1fr; }
+      .hero-content,
+      .designs-week,
+      .history-section,
+      .history-dark,
+      .styles-section,
+      .art-is-everything-section,
+      .footer-banner { padding: 40px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1>Turn Ideas into Reality</h1>
+        <p>Immerse yourself in the vibrant world of artistic expression. Explore the captivating interplay of color, form, and emotion that defines the essence of our creative journey.</p>
+        <p style="font-size: 1.2rem; font-weight: 700; color: #fff; letter-spacing: 0.05em;">TortskieParker</p>
+      </div>
+      <div class="hero-image">
+        <img src="https://i.pinimg.com/736x/0f/43/be/0f43be8dabefdf7566ef0c3e13f66dc6.jpg" alt="Flashlight illuminating a world of ideas" />
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPLORING THE CAPTIVATING WORLD OF ART -->
+  <section class="section-exploring" id="explore">
+    <div class="left">
+      <img src="https://cdn.cosmos.so/1c7c40bd-7e2c-4f0b-ab92-58024a8b77f8?format=jpeg" alt="Cascade event poster" />
+    </div>
+    <div class="right">
+      <h2>Exploring the Captivating World of Art</h2>
+      <img class="gallery-img" src="https://i.pinimg.com/736x/c5/96/e9/c596e9b55b05368169caa29f5ddc8a02.jpg" alt="Gallery space with black paintings" />
+    </div>
+  </section>
+
+  <!-- ART IS EVERYTHING + QUOTE -->
+  <div class="art-is-everything-section">
+    <div class="left-quote">
+      <img class="event-poster" src="e2244162-c31a-4a02-a5c6-1bca3ac5d82e.jpeg" alt="Event poster" style="display:none"/>
+      <p>Art is a captivating expression of the human experience, a window into the depths of our emotions, thoughts, and imaginations. It transcends the boundaries of language, culture, and time, inviting us to explore the beauty, complexity, and diversity of the world around us.</p>
+    </div>
+    <div class="right-text">
+      <h2>ART IS<br/>EVERYTHING</h2>
+    </div>
+  </div>
+
+  <!-- DESIGNS OF THE WEEK (merged with styles) -->
+  <section class="designs-week">
+    <h2>Designs of the week</h2>
+    <div class="designs-grid">
+      <div class="design-card">
+        <img src="https://i.pinimg.com/736x/68/b3/4b/68b34b121a8dbf49416bfe40b092b7d5.jpg" alt="Naive art" />
+        <h3>Naive</h3>
+        <p>a simple, colorful, and expressive style that embraces childlike perspectives and ignores traditional rules of realism and proportion.</p>
+      </div>
+      <div class="design-card">
+        <img src="https://i.pinimg.com/736x/3a/e9/5d/3ae95dc556700a54fbe097ac22d08891.jpg" alt="Minimalism" />
+        <h3>Minimalism</h3>
+        <p>a clean and simple design style that focuses on essential elements, using limited colors, space, and details to create clarity and balance.</p>
+      </div>
+      <div class="design-card">
+        <img src="https://i.pinimg.com/736x/e6/ff/b4/e6ffb409f8b03f79d101ec6400dac6a7.jpg" alt="Psychedelic" />
+        <h3>Psychedelic</h3>
+        <p>a vibrant and imaginative style characterized by bold colors, distorted shapes, swirling patterns, and surreal visuals that create a dreamlike or mind-bending effect.</p>
+      </div>
+      <div class="design-card">
+        <img src="https://i.pinimg.com/736x/35/89/f5/3589f5375f0408dc2535745e078cd45c.jpg" alt="Postmodernism" />
+        <h3>Postmodernism</h3>
+        <p>a bold and experimental design style that mixes different elements, embraces irony and playfulness, and breaks traditional design rules to create expressive and unconventional visuals.</p>
+      </div>
+      <div class="design-card">
+        <img src="https://i.pinimg.com/736x/84/73/16/847316f0fd470101679d895aec417489.jpg" alt="Brutalism" />
+        <h3>Brutalism</h3>
+        <p>a raw and striking design style characterized by heavy typography, stark contrasts, rigid grids, and an intentionally rough or unpolished appearance.</p>
+      </div>
+      <div class="design-card">
+        <img src="https://i.pinimg.com/736x/d5/95/5f/d5955f236ef296550bf4a502991a65c0.jpg" alt="Swiss" />
+        <h3>Swiss</h3>
+        <p>a clean and structured design approach that emphasizes grid systems, sans-serif typography, clarity, and strong visual hierarchy.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HISTORY OF ART -->
+  <section class="history-section">
+    <h2>HISTORY OF ART</h2>
+    <div class="history-block">
+      <div class="text-side">
+        <p>It started with a handprint on a cave wall.</p>
+        <p>Before museums, before galleries, before names were signed in the corners of canvases, there was a human being pressing pigment against stone, leaving proof that they existed. From those ancient markings in places like Lascaux Cave, art began as survival, ritual, and storytelling.</p>
+      </div>
+      <div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f4/SantaCruz-CuevaManos-P2210651b.jpg" alt="Cave of Hands ancient art" />
+      </div>
+    </div>
+  </section>
+
+  <!-- DARK HISTORY SECTION -->
+  <section class="history-dark">
+    <div>
+      <img src="https://i.pinimg.com/736x/94/a3/cb/94a3cbccf839b19b9a34d937d873887b.jpg" alt="Dark angel figure" />
+    </div>
+    <div class="text-side">
+      <p>Centuries later, the ceilings of Sistine Chapel bloomed with divine drama as Michelangelo painted stories across the sky of a church. Art became power, religion, science, and rebellion all at once.</p>
+      <p>Then came revolutions. Light fractured into color in the works of Claude Monet. Reality bent and broke under the brush of Pablo Picasso. Artists stopped asking, "How does it look?" and started asking, "How does it feel?"</p>
+      <p>And today, art lives everywhere — on screens, walls, clothes, streets. It glitches, loops, distorts, and reinvents itself. But at its core, it is still that first handprint: a human saying, <em>I was here.</em></p>
+      <div class="pull-quote">Art began with a handprint and became a voice for humanity.</div>
+    </div>
+  </section>
+
+  <!-- FOOTER BANNER -->
+  <div class="footer-banner">
+    <h2>ART IS EVERYTHING</h2>
+  </div>
+
+</body>
+</html>
